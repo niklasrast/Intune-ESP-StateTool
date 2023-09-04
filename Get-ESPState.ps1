@@ -17,6 +17,8 @@ $processesExplorer = @(Get-CimInstance -ClassName 'Win32_Process' -Filter "Name 
 $esp = $false
 foreach ($processExplorer in $processesExplorer) {
     $user = (Invoke-CimMethod -InputObject $processExplorer -MethodName GetOwner).User
-    if ($user -eq 'defaultuser0' -or $user -eq 'defaultuser1') {$esp = $true}
+    if ($user -eq 'defaultuser0' -or $user -eq 'defaultuser1') {
+        $esp = $true
+    }
 }
-Write-Host $esp 
+Write-Host $esp
